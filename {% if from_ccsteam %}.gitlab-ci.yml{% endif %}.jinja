@@ -191,6 +191,10 @@ deploy.botsprod:
   only:
     # Note the bots-prod worker requires branch to be protected
     - master
+  except:
+    variables:
+      - $DEBUG =~ /^(?i)true$/
+      - $DEBUG == "1"
   when: manual
   environment:
     name: production
